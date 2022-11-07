@@ -1,0 +1,29 @@
+@import '../../scss/variables.scss';
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  >h3 {
+    font-size: 15px;
+    font-weight: 200;
+    text-transform: capitalize;
+  }
+}
+
+.section_temperature {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $sectionOverlay;
+}
+
+.temperature {
+  font-size: 60px;
+}
