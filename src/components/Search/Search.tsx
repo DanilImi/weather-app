@@ -1,4 +1,11 @@
-import { ChangeEvent, Dispatch, FC, MouseEvent, SetStateAction, useMemo, useState } from "react"
+import { 
+  ChangeEvent, 
+  Dispatch, 
+  FC, 
+  MouseEvent, 
+  SetStateAction, 
+  useMemo 
+} from "react"
 import { debounce } from "../../utils/debounceFunc"
 import styles from './Search.module.scss'
 
@@ -8,11 +15,9 @@ interface ISearch {
 }
 
 const Search:FC<ISearch> = ({setUnit, setCity}) => {
-  //const [search, setSearch] = useState('')
 
   const handleOnChange = (searchData: ChangeEvent<HTMLInputElement>) => {
-    setCity(searchData?.target?.value)
-    console.log(searchData.target.value)
+    searchData.target.value !== '' ? setCity(searchData.target.value) : console.log('error')
   }
 
   const handleUnitsClick = (e: MouseEvent<HTMLButtonElement>) => {

@@ -8,7 +8,6 @@ import axios from "axios"
 const makeIconUrl = (iconId: string) => `http://openweathermap.org/img/wn/${iconId}@2x.png`
 
 export const getFormattedWeatherData = async({city, units}:IParams) => {
-    debugger
     const weatherData = await axios.get<IAxiosPromise>(`${process.env.REACT_APP_BASE_URL}/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}&units=${units}`)
       .then((res) => res.data)
     

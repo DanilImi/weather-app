@@ -8,10 +8,11 @@ import coldBg from './images/img.jpg'
 import Search from './components/Search/Search';
 import Temperature from './components/Temperature/Temperature';
 import Description from './components/Description/Description';
+import { useNavigate } from 'react-router-dom';
 
 
 const App:FC = () => {
-
+  const navigate = useNavigate()
   const [city, setCity] = useState('brest')
   const [units, setUnits] = useState('metric')
   const [weather, setWeather] = useState<IState>()
@@ -25,7 +26,8 @@ const App:FC = () => {
       })
       .catch((error) => {
         const err = error as AxiosError | Error
-        return err.message
+        console.log(err.message)
+        navigate('/notfound')
       }) 
     }
     fetchWeather()
@@ -46,7 +48,6 @@ const App:FC = () => {
                 temp={weather.temp}
                 unit={units} 
               />
-              {/* buttom description */}
               <Description weather={weather} units={units}/>
           </div>
           )

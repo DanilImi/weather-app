@@ -59,7 +59,7 @@ const Description: FC<IDescription> = ({weather, units}) => {
   return (
     <div className={styles.section_descriptions}>
       {cards.map(({id, icon, title, data, unit}) => (
-        <div className={styles.card}>
+        <div className={styles.card} key={id}>
           <div className={styles.description_cardIcon}>
             <span className='material-icons-outlined'>{icon}</span>
             <small>{title}</small>
