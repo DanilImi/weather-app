@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/weather-app/static/css/main.506d640a.css",
+    "main.js": "/weather-app/static/js/main.28e286c0.js",
+    "static/media/img.jpg": "/weather-app/static/media/img.eaab5ff7e59809db2db4.jpg",
+    "static/media/material-icons-two-tone.woff": "/weather-app/static/media/material-icons-two-tone.3baa5b8f3469222b822d.woff",
+    "static/media/material-icons-two-tone.woff2": "/weather-app/static/media/material-icons-two-tone.4ef4218c522f1eb6b5b1.woff2",
+    "static/media/material-icons-round.woff": "/weather-app/static/media/material-icons-round.5d681e2edae8c60630db.woff",
+    "static/media/material-icons-outlined.woff": "/weather-app/static/media/material-icons-outlined.f882956fd323fd322f31.woff",
+    "static/media/material-icons-round.woff2": "/weather-app/static/media/material-icons-round.c380809fd3677d7d6903.woff2",
+    "static/media/material-icons.woff": "/weather-app/static/media/material-icons.4d73cb90e394b34b7670.woff",
+    "static/media/material-icons-sharp.woff": "/weather-app/static/media/material-icons-sharp.3a4004a46a653d4b2166.woff",
+    "static/media/material-icons-outlined.woff2": "/weather-app/static/media/material-icons-outlined.6f420cf17cc0d7676fad.woff2",
+    "static/media/water.png": "/weather-app/static/media/water.cc1370de213e5662900b.png",
+    "static/media/material-icons-sharp.woff2": "/weather-app/static/media/material-icons-sharp.219aa9140e099e6c72ed.woff2",
+    "static/media/material-icons.woff2": "/weather-app/static/media/material-icons.0c35d18bf06992036b69.woff2",
+    "index.html": "/weather-app/index.html",
+    "main.506d640a.css.map": "/weather-app/static/css/main.506d640a.css.map",
+    "main.28e286c0.js.map": "/weather-app/static/js/main.28e286c0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.506d640a.css",
+    "static/js/main.28e286c0.js"
+  ]
+}
