@@ -1,4 +1,4 @@
-import { IAxiosPromiseForecast } from './../axiosPromiseForecast.interface';
+import { IList } from './../axiosPromiseForecast.interface';
 
 export interface IState {
   description: string
@@ -12,13 +12,22 @@ export interface IState {
   speed: number
   country: string
   name: string
-  //forecast: IAxiosPromiseForecast
+}
+
+
+export interface IForecast {
+  list: IList[]
 }
 
 
 export interface IParams {
   city: string
   units: string
+}
+
+export interface IParamsForecast {
+  cityForecast: string
+  unitsForecast: string
 }
 
 export interface main {

@@ -1,18 +1,11 @@
 import { FC } from "react"
+import { ITemperature } from "../../types/type/typesTemp"
 import styles from './Temperature.module.scss'
 
-interface ITemperature {
-  name: string
-  country: string
-  icon: string
-  description: string
-  temp: number
-  unit: string
-}
 
-const Temperature:FC<ITemperature> = ({name, country, icon, description, temp, unit}) => {
+const Temperature:FC<ITemperature> = ({name, country, icon, description, temp, unit, color}) => {
   return (
-    <div className={styles.section_temperature}>
+    <div className={color === true ? styles.section_temperature_dark : styles.section_temperature_light}>
       <div className={styles.icon}>
         <h3>{`${name}, ${country}`}</h3>
         <img src={icon} alt=''/>

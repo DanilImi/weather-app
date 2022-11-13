@@ -1,5 +1,6 @@
 import App from './App'
 import NotFound from './components/NotFound/NotFound'
+import Forecast from './components/Forecast/Forecast'
 
 const routesData = [
   {
@@ -9,6 +10,10 @@ const routesData = [
   {
     path: '/notfound',
     component: <NotFound />,
+  },
+  {
+    path: '/forecast',
+    component: <Forecast />,
   },
 ]
 

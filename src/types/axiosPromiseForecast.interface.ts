@@ -1,5 +1,18 @@
 import { clouds, coord, main, weather, wind } from "./type/types"
 
+
+export interface IList {  
+  clouds: clouds
+  dt: number
+  dt_txt: string
+  main: main
+  pop: number
+  sys: {pod: string}
+  visibility: number
+  weather: weather[]
+  wind: wind
+}
+
 export interface IAxiosPromiseForecast {
   city: {
     coord: coord
@@ -13,17 +26,5 @@ export interface IAxiosPromiseForecast {
   }
   cnt: number
   cod: number
-  list: [
-    {
-      clouds: clouds
-      dt: number
-      dt_txt: string
-      main: main
-      pop: number
-      sys: {pod: string}
-      visibility: number
-      weather: weather
-      wind: wind
-    }
-  ]
+  list: IList[]
 }

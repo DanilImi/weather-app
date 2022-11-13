@@ -1,17 +1,13 @@
 import { FC } from "react"
-import { IState } from "../../types/type/types"
+import { IDescription } from "../../types/type/typesDescription"
 import styles from './Description.module.scss'
 
-interface IDescription {
-  weather: IState
-  units: string
-}
 
-const Description: FC<IDescription> = ({weather, units}) => {
+const Description: FC<IDescription> = ({weather, units, color}) => {
   const tempUnit = units === 'metric' ? '℃' : '℉'
   const windUnit = units === 'metric' ? 'm/s' : 'm/h'
 
-  const cards = [
+  const minMax = [
     {
       id: 1,
       icon: 'arrow_downward',
@@ -26,29 +22,31 @@ const Description: FC<IDescription> = ({weather, units}) => {
       data: weather.temp_max.toFixed(),
       unit: tempUnit 
     },
+  ]
+  const cards = [
     {
-      id: 3,
+      id: 1,
       icon: 'mood',
       title: 'feels like',
       data: weather.feels_like.toFixed(),
       unit: tempUnit 
     },
     {
-      id: 4,
+      id: 2,
       icon: 'compress',
       title: 'pressure',
       data: weather.pressure.toFixed(),
       unit: "hPa" 
     },
     {
-      id: 5,
+      id: 3,
       icon: 'opacity',
       title: 'humidity',
       data: weather.humidity.toFixed(),
       unit: "%" 
     },
     {
-      id: 6,
+      id: 4,
       icon: 'air',
       title: 'wind speed',
       data: weather.speed.toFixed(),
@@ -57,18 +55,36 @@ const Description: FC<IDescription> = ({weather, units}) => {
   ]
   
   return (
-    <div className={styles.section_descriptions}>
-      {cards.map(({id, icon, title, data, unit}) => (
-        <div className={styles.card} key={id}>
-          <div className={styles.description_cardIcon}>
-            <span className='material-icons-outlined'>{icon}</span>
-            <small>{title}</small>
+    <>
+      <div className={styles.section_line}>
+        {minMax.map(({id, icon, title, data, unit}) => (
+          <div className={color === true ? styles.card_line_dark : styles.card_line_light} key={id}>
+            <div className={styles.description_cardLine}>
+              <span className='material-icons-outlined'>{icon}</span>
+              <small>{title}</small>
+            </div>
+            <div className={styles.data}>{`${data}${unit}`}</div>
           </div>
-          <h2>{`${data} ${unit}`}</h2>
+        ))}
+      </div>
+      <div className={color === true ? styles.section_container_dark : styles.section_container_light}>
+        <div className={styles.title}>Today</div>
+        <div className={styles.section_descriptions}>
+          {cards.map(({id, icon, title, data, unit}) => (
+            <div className={styles.card} key={id}>
+              <div className={styles.description_cardIcon}>
+                <span className='material-icons-outlined'>{icon}</span>
+                <small>{title}</small>
+              </div>
+              <div className={styles.containerData}>
+                <div className={styles.data}>{`${data}`}</div>
+                <div className={styles.data}>{`${unit}`}</div>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-
-    </div>
+      </div>
+    </>
   )
 }
 

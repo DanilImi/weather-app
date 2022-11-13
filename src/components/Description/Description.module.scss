@@ -1,9 +1,73 @@
 @import '../../scss/variables.scss';
 
+.section_line {
+  display: flex;
+  flex-wrap: wrap;
+  height: 47px;
+  justify-content: space-between;
+}
+
+.card_line_dark, .card_line_light {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  padding: 7px 10px 7px 10px;
+  margin-bottom: 14px;
+  border-radius: 20px;
+}
+.card_line_light {
+  background-color: $backgroundLight;
+}
+.card_line_dark {
+  background-color: $sectionOverlay;
+}
+
+.description_cardLine {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  >small {
+    text-transform: capitalize;
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.section_container_dark, .section_container_light{
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.3);
+}
+.section_container_light{
+  background-color: $backgroundLight;
+}
+.section_container_dark{
+  background-color: $sectionOverlay;
+}
+
+
+.title{
+  display: flex;
+  justify-content: center;
+  margin: 12px 0 12px 0;
+  font-weight: 700;
+  font-size: 20px;
+}
+
 .section_descriptions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
@@ -11,15 +75,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: $sectionOverlay;
+  height: 155px;
+  width: 70px;
 
-  padding: 1rem;
-  border-radius: 0.4rem;
+  padding: 13px;
+  border: 1px solid #5096FF;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.card:not(:last-child){
+  margin-right: 12px;
 }
 
 .description_cardIcon {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -30,9 +101,17 @@
     text-transform: capitalize;
   }
 }
+.containerData {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.data {
+  font-size: 18px;
+}
 
-@media screen and (max-width: 1024px) {
-  .section_descriptions {
-    grid-template-columns: 1fr 1fr;
+@media screen and (max-width: 450px) {
+  .card_line_dark, .card_line_light{
+    width: 100%;
   }
 }
