@@ -1,6 +1,6 @@
 
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Route,
   Routes,
 } from "react-router-dom";
@@ -8,7 +8,7 @@ import routesData from "./routesData";
 
 const RoutesPath = () => {
   return (
-    <Router>
+    <HashRouter>
       <Routes>
         {routesData.map(route => {
           return (
@@ -20,7 +20,7 @@ const RoutesPath = () => {
           )
         })}
       </Routes>
-    </Router>
+    </HashRouter>
   )
 }
 
