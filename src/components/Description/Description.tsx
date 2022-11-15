@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useMemo } from "react"
 import { IDescription } from "../../types/type/typesDescription"
 import styles from './Description.module.scss'
 
@@ -7,7 +7,7 @@ const Description: FC<IDescription> = ({weather, units, color}) => {
   const tempUnit = units === 'metric' ? '℃' : '℉'
   const windUnit = units === 'metric' ? 'm/s' : 'm/h'
 
-  const minMax = [
+  const minMax = useMemo(() => [
     {
       id: 1,
       icon: 'arrow_downward',
@@ -22,8 +22,9 @@ const Description: FC<IDescription> = ({weather, units, color}) => {
       data: weather.temp_max.toFixed(),
       unit: tempUnit 
     },
-  ]
-  const cards = [
+  ], [weather, tempUnit])
+  
+  const cards = useMemo(() => [
     {
       id: 1,
       icon: 'mood',
@@ -52,7 +53,7 @@ const Description: FC<IDescription> = ({weather, units, color}) => {
       data: weather.speed.toFixed(),
       unit: windUnit 
     },
-  ]
+  ], [weather, windUnit, tempUnit])
   
   return (
     <>

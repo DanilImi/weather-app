@@ -4,7 +4,7 @@ import {
   FC, 
   MouseEvent, 
   SetStateAction, 
-  useMemo,
+  useCallback, 
 } from "react"
 import { useNavigate } from "react-router-dom"
 import { debounce } from "../../utils/debounceFunc"
@@ -18,22 +18,23 @@ interface ISearch {
 
 const Search:FC<ISearch> = ({setUnit, setCity, setBool}) => {
   const navigate = useNavigate()
+  
   const handleOnChange = (searchData: ChangeEvent<HTMLInputElement>) => {
     searchData.target.value !== '' ? setCity(searchData.target.value) : console.log('error')
   }
+
   const handleNavigateClick = (e: MouseEvent<HTMLButtonElement>) => {
     setBool === true ? navigate('/forecast') : navigate(-1)
   }
 
   const handleUnitsClick = (e: MouseEvent<HTMLButtonElement>) => {
-    let button = e.currentTarget
+    const button = e.currentTarget
     const isCelsius = button.innerText === '℃'
     button.innerText = isCelsius ? "℉" : "℃"
     setUnit(isCelsius ? "metric" : "imperial")
   }
 
-	const debouncedChangeHandler = useMemo(() => debounce(handleOnChange), [])
-
+	const debouncedChangeHandler = useCallback(debounce(handleOnChange), [])
 
   return (
     <div className={styles.sectionInput}>
@@ -43,8 +44,8 @@ const Search:FC<ISearch> = ({setUnit, setCity, setBool}) => {
         placeholder='Enter City...'
         onChange={debouncedChangeHandler}
       />
-      <button onClick={(e) => handleUnitsClick(e)}>℉</button>
-      <button onClick={(e) => handleNavigateClick(e)} className='material-icons-outlined'>cloud</button>
+      <button onClick={handleUnitsClick}>℉</button>
+      <button onClick={handleNavigateClick} className='material-icons-outlined'>cloud</button>
     </div>
   )
 }

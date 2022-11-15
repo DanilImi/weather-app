@@ -20,7 +20,6 @@ const App:FC = () => {
     const fetchWeather = async () => {
       await getFormattedWeatherData({city, units})
       .then((data) => {
-        console.log(data)
         setWeather(data.formatWeather)
         const differenceTemp = units === 'metric' ? 20 : 60
         data.formatWeather.temp <= differenceTemp ? setBg(styles.appNew) : setBg(styles.app)
@@ -33,14 +32,13 @@ const App:FC = () => {
       }) 
     }
     fetchWeather()
-  }, [city, units])
+  }, [city, units, navigate])
 
   return (
     <div className={bg}>
       <div className={rain}>
         {
           weather && (
-            
             <div className={styles.container}>
               <Search 
                 setUnit={setUnits} 

@@ -22,7 +22,6 @@ const Forecast:FC = () => {
   const navigate = useNavigate()
   const [cityForecast, setCity] = useState('brest')
   const [unitsForecast, setUnits] = useState('metric')
-
   const [forecast, setForecast] = useState<IForecast>()
   const dayInWeek = new Date().getDay()
   const forecastDays = WEEK_DAYS.slice(dayInWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInWeek))
@@ -44,7 +43,7 @@ const Forecast:FC = () => {
       }) 
     }
     fetchForecast()
-  }, [cityForecast, unitsForecast])
+  }, [cityForecast, unitsForecast, navigate])
 
   return (
     <div className={styles.container}>
