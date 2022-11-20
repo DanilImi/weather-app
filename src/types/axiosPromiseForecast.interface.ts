@@ -1,13 +1,14 @@
-import { clouds, coord, main, weather, wind } from "./type/types"
+import {
+  clouds, coord, main, weather, wind,
+} from './type/types';
 
-
-export interface IList {  
+export interface IList {
   clouds: clouds
   dt: number
   dt_txt: string
   main: main
   pop: number
-  sys: {pod: string}
+  sys: { pod: string }
   visibility: number
   weather: weather[]
   wind: wind

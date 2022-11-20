@@ -1,4 +1,4 @@
-import { IList } from './../axiosPromiseForecast.interface';
+import { IList } from '../axiosPromiseForecast.interface';
 
 export interface IState {
   description: string
@@ -14,11 +14,9 @@ export interface IState {
   name: string
 }
 
-
 export interface IForecast {
   list: IList[]
 }
-
 
 export interface IParams {
   city: string
@@ -31,33 +29,32 @@ export interface IParamsForecast {
 }
 
 export interface main {
-  feels_like:number,
-  grnd_level?:number
-  humidity:number
-  pressure:number
-  sea_level?:number
-  temp:number
-  temp_kf?:number
-  temp_max:number
-  temp_min:number
+  feels_like: number
+  grnd_level?: number
+  humidity: number
+  pressure: number
+  sea_level?: number
+  temp: number
+  temp_kf?: number
+  temp_max: number
+  temp_min: number
 }
 
 export interface weather {
-  description: string,
-  icon: string,
-  id:number,
+  description: string
+  icon: string
+  id: number
   main: string
 }
 
-
 export interface wind {
-  deg: number,
-  gust: number,
+  deg: number
+  gust: number
   speed: number
 }
 
 export interface coord {
-  lat: number,
+  lat: number
   lon: number
 }
 

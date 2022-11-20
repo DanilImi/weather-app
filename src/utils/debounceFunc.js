@@ -1,11 +1,11 @@
 export const debounce = (func) => {
   let timer;
-  return function (...args){
+  return function (...args) {
     const context = this;
-    if(timer) clearTimeout(timer)
+    if (timer) clearTimeout(timer);
     timer = setTimeout(() => {
-      timer = null
+      timer = null;
       func.apply(context, args);
-    }, 1000)
-  }
-}
+    }, 1000);
+  };
+};

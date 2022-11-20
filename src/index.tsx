@@ -3,10 +3,8 @@ import './index.scss';
 import RoutesPath from './Routes';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
 root.render(
-  <RoutesPath />
+  <RoutesPath />,
 );
-
-

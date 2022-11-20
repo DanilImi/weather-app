@@ -1,11 +1,10 @@
-import { FC, useMemo } from "react"
-import { IDescription } from "../../types/type/typesDescription"
-import styles from './Description.module.scss'
+import { FC, useMemo } from 'react';
+import { IDescription } from '../../types/type/typesDescription';
+import styles from './Description.module.scss';
 
-
-const Description: FC<IDescription> = ({weather, units, color}) => {
-  const tempUnit = units === 'metric' ? '℃' : '℉'
-  const windUnit = units === 'metric' ? 'm/s' : 'm/h'
+const Description: FC<IDescription> = ({ weather, units, color }) => {
+  const tempUnit = units === 'metric' ? '℃' : '℉';
+  const windUnit = units === 'metric' ? 'm/s' : 'm/h';
 
   const minMax = useMemo(() => [
     {
@@ -13,68 +12,70 @@ const Description: FC<IDescription> = ({weather, units, color}) => {
       icon: 'arrow_downward',
       title: 'min',
       data: weather.temp_min.toFixed(),
-      unit: tempUnit 
+      unit: tempUnit,
     },
     {
       id: 2,
       icon: 'arrow_upward',
       title: 'max',
       data: weather.temp_max.toFixed(),
-      unit: tempUnit 
+      unit: tempUnit,
     },
-  ], [weather, tempUnit])
-  
+  ], [weather, tempUnit]);
   const cards = useMemo(() => [
     {
       id: 1,
       icon: 'mood',
       title: 'feels like',
       data: weather.feels_like.toFixed(),
-      unit: tempUnit 
+      unit: tempUnit,
     },
     {
       id: 2,
       icon: 'compress',
       title: 'pressure',
       data: weather.pressure.toFixed(),
-      unit: "hPa" 
+      unit: 'hPa',
     },
     {
       id: 3,
       icon: 'opacity',
       title: 'humidity',
       data: weather.humidity.toFixed(),
-      unit: "%" 
+      unit: '%',
     },
     {
       id: 4,
       icon: 'air',
       title: 'wind speed',
       data: weather.speed.toFixed(),
-      unit: windUnit 
+      unit: windUnit,
     },
-  ], [weather, windUnit, tempUnit])
-  
+  ], [weather, windUnit, tempUnit]);
   return (
     <>
       <div className={styles.section_line}>
-        {minMax.map(({id, icon, title, data, unit}) => (
-          <div className={color === true ? styles.card_line_dark : styles.card_line_light} key={id}>
+        {minMax.map(({
+          id, icon, title, data, unit,
+        }) => (
+          <div className={color ? styles.card_line_dark : styles.card_line_light} key={id}>
             <div className={styles.description_cardLine}>
-              <span className='material-icons-outlined'>{icon}</span>
+              <span className="material-icons-outlined">{icon}</span>
               <small>{title}</small>
             </div>
             <div className={styles.data}>{`${data}${unit}`}</div>
           </div>
         ))}
       </div>
-      <div className={color === true ? styles.section_container_dark : styles.section_container_light}>
+      <div className={color ? styles.section_container_dark : styles.section_container_light}>
         <div className={styles.title}>Today</div>
         <div className={styles.section_descriptions}>
-          {cards.map(({id, icon, title, data, unit}) => (
+          {cards.map(({
+            id, icon, title, data, unit,
+          }) => (
             <div className={styles.card} key={id}>
               <div className={styles.description_cardIcon}>
-                <span className='material-icons-outlined'>{icon}</span>
+                <span className="material-icons-outlined">{icon}</span>
                 <small>{title}</small>
               </div>
               <div className={styles.containerData}>
@@ -86,7 +87,7 @@ const Description: FC<IDescription> = ({weather, units, color}) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Description
+export default Description;

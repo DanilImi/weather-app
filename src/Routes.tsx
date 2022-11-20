@@ -1,26 +1,25 @@
 import {
   HashRouter,
   Route,
-  Routes,
-} from "react-router-dom";
-import routesData from "./routesData";
+  //Routes,
+} from 'react-router-dom';
+import CustomSwitch from './CustomSwitch/CustomSwitch';
+import routesData from './routesData';
 
-const RoutesPath = () => {
+function RoutesPath(): JSX.Element {
   return (
     <HashRouter>
-      <Routes>
-        {routesData.map(route => {
-          return (
-            <Route 
-              path={route.path}
-              element={route.component}
-              key={`route ${route.path}`}
-            />
-          )
-        })}
-      </Routes>
+      <CustomSwitch>
+        {routesData.map((route) => (
+          <Route
+            path={route.path}
+            element={route.component}
+            key={`route ${route.path}`}
+          />
+        ))}
+      </CustomSwitch>
     </HashRouter>
-  )
+  );
 }
 
-export default RoutesPath
+export default RoutesPath;

@@ -1,6 +1,6 @@
-import App from './App'
-import NotFound from './components/NotFound/NotFound'
-import Forecast from './components/Forecast/Forecast'
+import App from './App';
+import NotFound from './components/NotFound/NotFound';
+import Forecast from './components/Forecast/Forecast';
 
 const routesData = [
   {
@@ -15,6 +15,6 @@ const routesData = [
     path: '/forecast',
     component: <Forecast />,
   },
-]
+];
 
-export default routesData
+export default routesData;

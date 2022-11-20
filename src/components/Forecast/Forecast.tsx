@@ -1,58 +1,54 @@
-import { 
-  FC, 
-  useEffect, 
-  useState 
-} from "react"
-import { 
-  Accordion, 
-  AccordionItem, 
-  AccordionItemPanel, 
-  AccordionItemHeading, 
-  AccordionItemButton
-} from "react-accessible-accordion"
-import { useNavigate } from "react-router-dom"
-import { getFormattedForecastData, makeIconUrl } from "../../services/weatherServices"
-import { IForecast } from "../../types/type/types"
-import { WEEK_DAYS } from "../../utils/weekDays"
-import Search from "../Search/Search"
-import styles from './Forecast.module.scss'
+import {
+  FC,
+  useEffect,
+  useState,
+} from 'react';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemPanel,
+  AccordionItemHeading,
+  AccordionItemButton,
+} from 'react-accessible-accordion';
+import { useNavigate } from 'react-router-dom';
+import { getFormattedForecastData, makeIconUrl } from '../../services/weatherServices';
+import { IForecast } from '../../types/type/types';
+import { WEEK_DAYS } from '../../utils/weekDays';
+import Search from '../Search/Search';
+import styles from './Forecast.module.scss';
 
-
-const Forecast:FC = () => {
-  const navigate = useNavigate()
-  const [cityForecast, setCity] = useState('brest')
-  const [unitsForecast, setUnits] = useState('metric')
-  const [forecast, setForecast] = useState<IForecast>()
-  const dayInWeek = new Date().getDay()
-  const forecastDays = WEEK_DAYS.slice(dayInWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInWeek))
-  const tempUnit = unitsForecast === 'metric' ? '℃' : '℉'
-  const windUnit = unitsForecast === 'metric' ? 'm/s' : 'm/h'
-
+const Forecast: FC = () => {
+  const navigate = useNavigate();
+  const [cityForecast, setCity] = useState('brest');
+  const [unitsForecast, setUnits] = useState('metric');
+  const [forecast, setForecast] = useState<IForecast>();
+  const dayInWeek = new Date().getDay();
+  const forecastDays = WEEK_DAYS.slice(dayInWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInWeek));
+  const tempUnit = unitsForecast === 'metric' ? '℃' : '℉';
+  const windUnit = unitsForecast === 'metric' ? 'm/s' : 'm/h';
 
   useEffect(() => {
-    const fetchForecast = async () => {
-      await getFormattedForecastData({cityForecast, unitsForecast})
-      .then((data) => {
-        console.log(data)
-        setForecast(data.formatForecast)
-      })
-      .catch((error) => {
-        const err = error as Error
-        console.log(err.message)
-        navigate('/notfound')
-      }) 
-    }
-    fetchForecast()
-  }, [cityForecast, unitsForecast, navigate])
+    const fetchForecast = async (): Promise<void> => {
+      await getFormattedForecastData({ cityForecast, unitsForecast })
+        .then((data) => {
+          setForecast(data.formatForecast);
+        });
+    };
+    fetchForecast().catch((error) => {
+      const err = error as Error;
+      console.log(err.message);
+      navigate('/notfound');
+    });
+  }, [cityForecast, unitsForecast, navigate]);
 
   return (
     <div className={styles.container}>
-      <Search 
-        setCity={setCity} 
-        setUnit={setUnits} 
+      <Search
+        setCity={setCity}
+        setUnit={setUnits}
         setBool={false}
       />
-      <label className={styles.title}>Daily</label>
+      <div className={styles.title}>Daily</div>
       <Accordion allowZeroExpanded>
         {forecast?.list.splice(0, 7).map((item, idx) => (
           <AccordionItem key={idx}>
@@ -66,35 +62,47 @@ const Forecast:FC = () => {
                 </div>
               </AccordionItemButton>
             </AccordionItemHeading>
-            <AccordionItemPanel>
+            <AccordionItemPanel className={styles.accordionPanel}>
               <div className={styles.dailyDetailsGrid}>
                 <div>
-                  <label className='material-icons-outlined'>compress</label>
+                  <label className="material-icons-outlined">compress</label>
                   <label>Pressure</label>
-                  <label>{item.main.pressure} hPa</label>
+                  <label>
+                    {item.main.pressure}
+                    {' '}
+                    hPa
+                  </label>
                 </div>
                 <div>
-                  <label className='material-icons-outlined'>opacity</label>
+                  <label className="material-icons-outlined">opacity</label>
                   <label>Humidity</label>
-                  <label>{item.main.humidity} %</label>
+                  <label>
+                    {item.main.humidity}
+                    {' '}
+                    %
+                  </label>
                 </div>
                 <div>
-                  <label className='material-icons-outlined'>cloud</label>
+                  <label className="material-icons-outlined">cloud</label>
                   <label>Clouds</label>
-                  <label>{item.clouds.all} %</label>
+                  <label>
+                    {item.clouds.all}
+                    {' '}
+                    %
+                  </label>
                 </div>
                 <div>
-                  <label className='material-icons-outlined'>air</label>
+                  <label className="material-icons-outlined">air</label>
                   <label>Wind speed:</label>
                   <label>{`${item.wind.speed} ${windUnit}`}</label>
                 </div>
                 <div>
-                  <label className='material-icons-outlined'>water</label>
+                  <label className="material-icons-outlined">water</label>
                   <label>Sea level:</label>
-                  <label>{`${item.main.sea_level} m`}</label>
+                  <label>{(item.main.sea_level != null) ? `${item.main.sea_level} m` : 'error'}</label>
                 </div>
                 <div>
-                  <label className='material-icons-outlined'>mood</label>
+                  <label className="material-icons-outlined">mood</label>
                   <label>Feels like:</label>
                   <label>{`${Math.round(item.main.feels_like)} ${tempUnit}`}</label>
                 </div>
@@ -104,7 +112,7 @@ const Forecast:FC = () => {
         ))}
       </Accordion>
     </div>
-  )
-}
+  );
+};
 
-export default Forecast
+export default Forecast;

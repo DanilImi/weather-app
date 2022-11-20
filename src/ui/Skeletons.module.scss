@@ -1,0 +1,21 @@
+.containerSkeleton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.skeleton {
+  align-items: center;
+  width: 200px;
+  height: 37px;
+  margin-bottom: 14px;
+}
+
+@media screen and (max-width: 450px) {
+  .containerSkeleton {
+    justify-content: center;
+  }
+  .skeleton{
+    width: 328px;
+  }
+}
