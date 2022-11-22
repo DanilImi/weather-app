@@ -16,9 +16,10 @@ interface ISearch {
   setUnit: Dispatch<SetStateAction<string>>
   setCity: Dispatch<SetStateAction<string>>
   setBool: boolean
+  color: boolean
 }
 
-const Search: FC<ISearch> = ({ setUnit, setCity, setBool }) => {
+const Search: FC<ISearch> = ({ setUnit, setCity, setBool, color }) => {
   const navigate = useNavigate();
   const [celsius, setCelsius] = useState('℉')
   const [celsiusName, setCelsiusName] = useState('imperial')
@@ -54,10 +55,10 @@ const Search: FC<ISearch> = ({ setUnit, setCity, setBool }) => {
         onChange={debouncedChangeHandler}
       />
       <button onClick={handleNavigateClick}>
-        <IconsPopup str='cloud' name='forecast'/>
+        <IconsPopup str='cloud' name='forecast' color={color}/>
       </button>
       <button onClick={handleUnitsClick}>
-        <IconsPopup str={celsius} name={celsiusName}/>
+        <IconsPopup str={celsius} name={celsiusName} color={color}/>
       </button>
     </div>
   );

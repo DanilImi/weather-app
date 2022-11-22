@@ -53,6 +53,7 @@ const Forecast: FC = () => {
           setCity={setCity}
           setUnit={setUnits}
           setBool={false}
+          color={false}
         />
         <div className={styles.title}>{`Daily ${cityForecast}`}</div>
         {isLoading ? (

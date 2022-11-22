@@ -45,6 +45,7 @@ const App: FC = () => {
             setUnit={setUnits}
             setCity={setCity}
             setBool
+            color={bg === styles.appNew}
           />
           {
             isLoading ? (

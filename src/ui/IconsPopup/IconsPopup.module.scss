@@ -1,10 +1,11 @@
+@import '../../scss/variables.scss';
+
 .wrapper {
   display: inline-flex;
   list-style: none;
 
-  .icon {
+  .iconLight, .iconDark {
     position: relative;
-    background: #008080;
     border-radius: 50%;
     padding: 15px;
     margin: 10px;
@@ -19,12 +20,24 @@
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+  .iconDark {
+    background: $backgroundButtonCold;
+    &:hover {
+      background: $backgroundButtonColdHover;
+    }
+  }
+  .iconLight {
+    background: $backgroundButtonHot;
+    &:hover {
+      background: $backgroundButtonHotHover;
+    }
+  }
+  
 
-  .tooltip {
+  .tooltipLight, .tooltipDark {
     position: absolute;
     top: 0;
     font-size: 14px;
-    background: #008080;
     color: #ffffff;
     padding: 5px 8px;
     border-radius: 5px;
@@ -33,28 +46,40 @@
     pointer-events: none;
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+  .tooltipDark {
+    background: $backgroundButtonColdHover;
+  }
+  .tooltipLight {
+    background: $backgroundButtonHotHover;
+  }
 
-  .tooltip::before {
+  .tooltipLight::before, .tooltipDark::before {
     position: absolute;
     content: "";
     height: 8px;
     width: 8px;
-    background: #008080;
     bottom: -3px;
     left: 50%;
     transform: translate(-50%) rotate(45deg);
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+  .tooltipLight::before {
+    background: $backgroundButtonHotHover;
+  }
+  .tooltipDark::before {
+    background: $backgroundButtonColdHover;
+  }
 
-  .icon:hover .tooltip {
+  .iconLight:hover .tooltipLight, 
+  .iconDark:hover .tooltipDark {
     top: -35px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
   }
 
-  .icon:hover span,
-  .icon:hover .tooltip {
+  .iconLight:hover span, .iconDark:hover span,
+  .iconLight:hover .tooltipLight, .iconDark:hover .tooltipDark {
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
   }
 }
