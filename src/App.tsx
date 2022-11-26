@@ -1,12 +1,14 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IState } from './types/type/types';
-import { getFormattedWeatherData } from './services/weatherServices';
-import styles from './app.module.scss';
+
 import Search from './components/Search/Search';
 import Temperature from './components/Temperature/Temperature';
 import Description from './components/Description/Description';
 import Skeletons from './ui/Skeleton';
+import { getFormattedWeatherData } from './services/weatherServices';
+
+import styles from './app.module.scss';
+import { IState } from './types/type/types';
 
 const App: FC = () => {
   const navigate = useNavigate();

@@ -1,0 +1,16 @@
+{
+  "plan_title": "Pricing",
+  "input": "Enter the city in English...",
+  "notFound": "Oops! Page not found",
+  "descriptionNotFound": "We can't find the page you're looking for",
+  "goBack": "Go back home",
+  "min": "min",
+  "max": "max",
+  "feel_like": "feels like",
+  "pressure": "pressure",
+  "humidity": "humidity",
+  "wind_speed": "wind speed",
+  "fahrenheit": "fahrenheit",
+  "celsius": "celsius",
+  "forecast": "forecast"
+}

@@ -12,11 +12,11 @@ import {
 } from 'react-accessible-accordion';
 import { useNavigate } from 'react-router-dom';
 import { getFormattedForecastData, makeIconUrl } from '../../services/weatherServices';
-import { IForecast } from '../../types/type/types';
 import SkeletonForecast from '../../ui/SkeletonForecast/SkeletonForecast';
 import { WEEK_DAYS } from '../../utils/weekDays';
 import Search from '../Search/Search';
 import styles from './Forecast.module.scss';
+import { IForecast } from '../../types/type/types';
 
 const Forecast: FC = () => {
   const navigate = useNavigate();

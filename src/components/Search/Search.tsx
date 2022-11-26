@@ -7,6 +7,7 @@ import {
   useCallback,
   useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import IconsPopup from '../../ui/IconsPopup/IconsPopup';
 import { debounce } from '../../utils/debounceFunc';
@@ -20,9 +21,18 @@ interface ISearch {
 }
 
 const Search: FC<ISearch> = ({ setUnit, setCity, setBool, color }) => {
+
+  const {t, i18n} = useTranslation()
   const navigate = useNavigate();
   const [celsius, setCelsius] = useState('℉')
-  const [celsiusName, setCelsiusName] = useState('imperial')
+  const [celsiusName, setCelsiusName] = useState(`${t('fahrenheit')}`)
+  const [count, setCount] = useState(true)
+
+  const handleLanguage = (language: string, count: boolean): void => {
+    i18n.changeLanguage(language)
+    count ? setCelsiusName(`${t('fahrenheit')}`) : setCelsiusName(`${t('celsius')}`)
+  }
+
   const handleOnChange = (searchData: ChangeEvent<HTMLInputElement>): void => {
     searchData.target.value !== '' ? setCity(searchData.target.value) : console.log('error');
   };
@@ -36,30 +46,33 @@ const Search: FC<ISearch> = ({ setUnit, setCity, setBool, color }) => {
     const isCelsius = button.innerText.includes('℃');
     if(isCelsius){ 
       setCelsius('℉')
-      setCelsiusName('imperial')
+      setCelsiusName(`${t('fahrenheit')}`)
+      setCount(true)
     }else {
       setCelsius('℃')
-      setCelsiusName('metric')
+      setCelsiusName(`${t('celsius')}`)
+      setCount(false)
     };
     setUnit(isCelsius ? 'metric' : 'imperial');
   };
 
   const debouncedChangeHandler = useCallback(debounce(handleOnChange), []);
-
   return (
     <div className={styles.sectionInput}>
       <input
         type="text"
         name="city"
-        placeholder="Enter City..."
+        placeholder={`${t('input')}`}
         onChange={debouncedChangeHandler}
       />
       <button onClick={handleNavigateClick}>
-        <IconsPopup str='cloud' name='forecast' color={color}/>
+        <IconsPopup str='cloud' name={t('forecast')} color={color}/>
       </button>
       <button onClick={handleUnitsClick}>
         <IconsPopup str={celsius} name={celsiusName} color={color}/>
       </button>
+      <button onClick={() => handleLanguage('ru', count)}>RU</button>
+      <button onClick={() => handleLanguage('en', count)}>EN</button>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import {
   HashRouter,
   Route,
-  //Routes,
 } from 'react-router-dom';
 import CustomSwitch from './CustomSwitch/CustomSwitch';
 import routesData from './routesData';
